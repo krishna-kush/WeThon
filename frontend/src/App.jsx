@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './routes/Home'
-import Signup from './routes/Signup'
-import Signin from './routes/Signin'
+import Signin from './routes/signin/Signin'
+import Signup from './routes/signup/Signup'
 import Hack from './routes/Hack/index'
+import AllThons from './routes/allthons/AllThons'
 
 function App() {
 
@@ -15,8 +16,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path='/hack' element={<Hack/>} />
-          {/* <Route path="/hack" element={<Hack />} /> */}
-          {/* <Route path="/allthons" element={<AllThons />} /> */}
+          <Route path="/allthons" element={<AllThons />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
