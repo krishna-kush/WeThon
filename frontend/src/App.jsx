@@ -6,6 +6,7 @@ import Signup from './routes/signup/Signup'
 import Hack from './routes/Hack/index'
 import AllThons from './routes/allthons/AllThons'
 import { Header } from './components/Hero'
+import CodeSpace from './routes/Hack/codespace'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/allthons" element={<AllThons />} />
           <Route path="/header" element={<Header />} />
           <Route path="/" element={<Home />} />
+          {/* <Route path="/codespace" element={<CodeSpace />} /> */}
         </Routes>
       </BrowserRouter>
     </>
