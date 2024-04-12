@@ -5,6 +5,7 @@ import Signin from './routes/signin/Signin'
 import Signup from './routes/signup/Signup'
 import Hack from './routes/Hack/index'
 import AllThons from './routes/allthons/AllThons'
+import { Header } from './components/Hero'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path='/hack' element={<Hack/>} />
           <Route path="/allthons" element={<AllThons />} />
+          <Route path="/header" element={<Header />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
