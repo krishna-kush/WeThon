@@ -1,8 +1,11 @@
 import React from 'react'
+import Info from './Info/index'
 
 const index = () => {
   return (
-    <div>index</div>
+    <div>
+      <Info />
+    </div>
   )
 }
 
