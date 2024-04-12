@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import Info from './Info/index'
 import Vid from './Vid/index'
 import Upload from './Upload/index'
+import Messages from './Messages/index'
 
 const index = () => {
   return (
@@ -35,7 +36,7 @@ const index = () => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',   
-       
+
       margin: '0 3em',
       gap: '3rem',
     }}>
@@ -68,6 +69,12 @@ const index = () => {
           <Upload />
         </Box>
       </Box>
+    </Box>
+
+    <br />
+
+    <Box>
+      <Messages />
     </Box>
 
     </Box>
