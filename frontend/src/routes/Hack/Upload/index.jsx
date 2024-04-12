@@ -1,27 +1,9 @@
 import React, { useState } from 'react'
-
-import { Box, Typography, Button } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
-
-
 import Dropzone from 'react-dropzone';
 
-function DataTable({rows}) {
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-      />
-    </div>
-  );
-}
+import { Box, Typography, Button } from '@mui/material';
+
+import DialogUpload from './dialog'
 
 const index = () => {
 
@@ -35,64 +17,51 @@ const index = () => {
     console.log(files)
   }
 
+  // return (
+  //   <DialogUpload files={files}/>
+  // )
+
   return (
     <div>
-      <Dropzone onDrop={handleOnDrop} accept="*" webkitdirectory directory >
+      {
+        !files[0] ? (
+          <Dropzone onDrop={handleOnDrop} accept="*" webkitdirectory directory >
           {({ getRootProps, getInputProps }) => (
               <section className="dropzone">
               <div {...getRootProps()}>
-                  <input {...getInputProps()} webkitdirectory directory />
-                  <Box
-                  sx = {{
-                      display : "flex",
-                      flexDirection : "column",
-                      justifyContent : "center",
-                      alignContent : "center",
-                      alignItems : "center",
-                      borderColor : "grey",
-                      borderWidth : 1,
-                      borderStyle : "dashed",
-                      borderRadius : 10,
-                      marginTop : 5
-                  }}
-                  >
-                      {/* <DriveFolderUploadIcon sx={{
-                          fontSize : 100
-                      }}/> */}
+                  <input {...getInputProps()}  webkitdirectory="" directory="" />
+                  <Button sx={{
+                    display : "flex",
+                    justifyContent : "center",
+                    alignContent : "center"
 
-                      <img src="/movingIcon/floatCartoon.gif" alt="" />
+                  }} onClick={handleUpload} variant="contained"
+                  // disabled={circularLoading}
+                  >Upload</Button>
 
-                      <Typography sx={{
-                          margin : 2
-                      }}>Drag and drop folders or files here, or click to select</Typography>
-
-                      {/* <CompressedImage source={""}/> */}
-                  </Box>
+                  <Button lable='Upload' />
               </div>
               
               </section>
           )}
-      </Dropzone>
-
-      <ul className="file-list">
-        {
-            files[0] ? (
-                <DataTable rows={files}/>
-            ) : (
-                null
-            )
-        }
-        </ul>
+        </Dropzone>
+        )
+        : null
+        // <ul className="file-list">
+        //   <DataTable rows={files}/>
+        // </ul>
+      }
+      <DialogUpload files={files} setFiles={setFiles} />
 
 
-      <Button sx={{
+      {/* <Button sx={{
           display : "flex",
           justifyContent : "center",
           alignContent : "center"
 
       }} onClick={handleUpload} variant="contained"
       // disabled={circularLoading}
-      >Upload</Button>
+      >Upload</Button> */}
     </div>
   )
 }

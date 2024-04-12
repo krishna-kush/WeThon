@@ -17,16 +17,9 @@ const index = () => {
     }}>
       <Box
       sx={{
-        width: '50%',
-      }}
-      >
-        <Info />
-      </Box>
-
-      <Box
-      sx={{
-        width: '50%',
+        width: '70%',
         // height: '100%',
+        height: '50vh',
         backgroundColor: 'grey',
       }}
       >
@@ -34,26 +27,29 @@ const index = () => {
       </Box>
     </Box>
 
+    <br />
 
     <Box sx={{
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      // alignItems: 'center',    
+      alignItems: 'center',    
     }}>
       <Box
       sx={{
-        width: '50%',
-        // height: '100%',
-        backgroundColor: 'grey',
+        flex: 3,
       }}
       >
-        <Vid />
+        <Info />
       </Box>
 
       <Box
         sx={{
-          width: '50%',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           // height: '100%',
           // backgroundColor: 'grey',
         }}
