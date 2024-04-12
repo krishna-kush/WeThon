@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+
 
 import Dropzone from 'react-dropzone';
 
+function DataTable({rows}) {
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}
+        pageSizeOptions={[5, 10]}
+      />
+    </div>
+  );
+}
 
 const index = () => {
 
+  const [files, setFiles] = useState([])
+
   const handleOnDrop = (files) => {
+    setFiles(files)
+    console.log(files)
+  }
+  const handleUpload = (files) => {
     console.log(files)
   }
 
@@ -49,6 +73,26 @@ const index = () => {
               </section>
           )}
       </Dropzone>
+
+      <ul className="file-list">
+        {
+            files[0] ? (
+                <DataTable rows={files}/>
+            ) : (
+                null
+            )
+        }
+        </ul>
+
+
+      <Button sx={{
+          display : "flex",
+          justifyContent : "center",
+          alignContent : "center"
+
+      }} onClick={handleUpload} variant="contained"
+      // disabled={circularLoading}
+      >Upload</Button>
     </div>
   )
 }

@@ -55,7 +55,7 @@ const index = () => {
         sx={{
           width: '50%',
           // height: '100%',
-          backgroundColor: 'grey',
+          // backgroundColor: 'grey',
         }}
       >
         <Upload />
