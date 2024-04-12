@@ -33,7 +33,8 @@ const index = () => {
                   <Button sx={{
                     display : "flex",
                     justifyContent : "center",
-                    alignContent : "center"
+                    alignContent : "center",
+                    width: '100%'
 
                   }} onClick={handleUpload} variant="contained"
                   // disabled={circularLoading}

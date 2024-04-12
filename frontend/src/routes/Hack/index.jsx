@@ -13,6 +13,7 @@ const index = () => {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
+      gap: '1rem',
       // alignItems: 'center',    
     }}>
       <Box
@@ -33,7 +34,10 @@ const index = () => {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center',    
+      alignItems: 'center',   
+       
+      margin: '0 3em',
+      gap: '3rem',
     }}>
       <Box
       sx={{
@@ -54,7 +58,15 @@ const index = () => {
           // backgroundColor: 'grey',
         }}
       >
-        <Upload />
+        <Box 
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+        }}
+        >
+          <Upload />
+        </Box>
       </Box>
     </Box>
 
