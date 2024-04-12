@@ -1,0 +1,18 @@
+Hackathon Starter (https://github.com/topics/hackathon-starter)
+This is a boilerplate code for a hackathon website built with Ruby on Rails. It includes features like user authentication, team formation, project submission, and a basic judging system. You can customize it to include features like an MCY quiz or integrate a code editor.
+
+HackFests (https://github.com/topics/hackathon)
+This is a  Django based hackathon platform that  includes features like user registration, team formation, project management, and a built-in communication system. It  also  has an API for integrating with other tools. You can potentially integrate a code editor using the API.
+
+DevFest (https://github.com/topics/devfest)
+This repository provides a template for a hackathon website built with Next.js. It has a focus on developer experience and includes features like a code editor with syntax highlighting, a built-in terminal, and a real-time collaboration tool. It might be a good base if you want to prioritize the coding aspect of the hackathon.
+
+While none of these repositories will have all the features you listed out-of-the-box, they provide a solid foundation to build upon. You can customize them to  include an MCQ quiz by integrating with a third-party quizzing platform or building a simple quizzing module from scratch.
+
+Here are some additional resources that might be helpful:
+
+Meraki (https://github.com/meraki) is a project management tool that can be used to manage hackathons, including features like team formation and task management.
+
+CodeSandbox (https://codesandbox.io/) is a cloud-based code editor that can be embedded into a website. This could be a good option if you want to provide a more integrated coding experience for participants.
+
+By combining these resources and customizing the code, you can create a virtual hackathon website that meets your specific needs.
