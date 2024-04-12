@@ -1,11 +1,14 @@
 import React from 'react'
 import Info from './Info/index'
+import { Box } from '@mui/material';
 
 const index = () => {
   return (
-    <div>
+    <Box sx={{
+      width: '50%',
+    }}>
       <Info />
-    </div>
+    </Box>
   )
 }
 

@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 
+import MemberList from './MemberList';
+
 function FeaturedPost({post}) {
   return (
     <CardActionArea component="a" href="#">
@@ -23,7 +25,7 @@ function FeaturedPost({post}) {
             {post.description}
         </Typography>
         <Box>
-            Team Mem
+            <MemberList />
         </Box>
         </CardContent>
     </Card>
