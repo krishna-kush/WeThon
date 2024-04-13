@@ -33,10 +33,12 @@ const Stream = () => {
       currentStream.getTracks().forEach((track) => peer.addTrack(track, currentStream));
 
       peer.onicecandidate = (event) => {
+        console.log('11')
         if (event.candidate) {
+          console.log('l2')
           socket.emit("start-stream", { signal: event.candidate });
         }
-      };
+      }; 
 
       peer.onnegotiationneeded = async () => {
         try {
