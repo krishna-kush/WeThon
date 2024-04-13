@@ -5,10 +5,12 @@ import Signin from './routes/signin/Signin'
 import Signup from './routes/signup/Signup'
 import Hack from './routes/Hack/index'
 import AllThons from './routes/allthons/AllThons'
-import { Header } from './components/Hero'
+// import { Header } from './components/Hero'
 import CodeSpace from './routes/Hack/codespace'
 import Createthon from './routes/createthon/Createthon'
 import Managethon from './routes/managethon/Managethon'
+
+import Header from './components/Header/index'
 
 function App() {
 
@@ -17,6 +19,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/*" element={<Header />} />
+        </Routes>
+
+        <Routes>
+
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path='/hack' element={<Hack/>} />
