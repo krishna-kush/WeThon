@@ -19,8 +19,8 @@ export default function EmailExample() {
 
   const options = [
     {
-      name: 'page 1',
-      href: '/page1',
+      name: 'Dashboard',
+      href: '/allthons',
       selected: true,
       icon: <EmailRoundedIcon />,
     },
@@ -29,11 +29,11 @@ export default function EmailExample() {
       href: '/page1',
       icon: <EmailRoundedIcon />
     },
-    {
-      name: 'page 3',
-      href: '/page1',
-      icon: <EmailRoundedIcon />
-    },
+    // {
+    //   name: 'page 3',
+    //   href: '/page1',
+    //   icon: <EmailRoundedIcon />
+    // },
   ]
 
   return (

@@ -10,6 +10,8 @@ import CodeSpace from './routes/Hack/codespace'
 import Createthon from './routes/createthon/Createthon'
 import Managethon from './routes/managethon/Managethon'
 
+import PageNotFound from './routes/PageNotFound'
+
 import Header from './components/Header/index'
 
 function App() {
@@ -34,6 +36,9 @@ function App() {
           <Route path='/createthon' element={<Createthon/>} />
           <Route path='/managethon' element={<Managethon/>} />
           {/* <Route path="/codespace" element={<CodeSpace />} /> */}
+
+
+          <Route path='/*' element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>
     </>

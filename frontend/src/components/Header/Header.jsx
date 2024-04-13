@@ -35,6 +35,7 @@ function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
     setMounted(true);
+    setMode('dark')
   }, []);
   if (!mounted) {
     return <IconButton size="sm" variant="outlined" color="primary" />;
