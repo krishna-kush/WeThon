@@ -165,18 +165,6 @@ export default function Header({options}) {
         >
           <SearchRoundedIcon />
         </IconButton>
-        <Tooltip title="Joy UI overview" variant="outlined">
-          <IconButton
-            size="sm"
-            variant="plain"
-            color="neutral"
-            component="a"
-            href="/blog/first-look-at-joy/"
-            sx={{ alignSelf: 'center' }}
-          >
-            <BookRoundedIcon />
-          </IconButton>
-        </Tooltip>
         <ColorSchemeToggle />
         <Dropdown>
           <MenuButton
@@ -230,18 +218,6 @@ export default function Header({options}) {
             <MenuItem>
               <SettingsRoundedIcon />
               Settings
-            </MenuItem>
-            <ListDivider />
-            <MenuItem component="a" href="/blog/first-look-at-joy/">
-              First look at Joy UI
-              <OpenInNewRoundedIcon />
-            </MenuItem>
-            <MenuItem
-              component="a"
-              href="https://github.com/mui/material-ui/tree/master/docs/data/joy/getting-started/templates/email"
-            >
-              Sourcecode
-              <OpenInNewRoundedIcon />
             </MenuItem>
             <ListDivider />
             <MenuItem>

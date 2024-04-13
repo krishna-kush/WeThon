@@ -1,6 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+
+import { getHack } from '../../api/hack'
 
 function SingleHack() {
+    const params=useParams()
+
+    const [data, setData] = useState(null)
+
+    useEffect(()=> {
+        (async ()=>{
+            const mdata = await getHack(params.id)
+            console.log(mdata.data.data.attributes)
+            setData(mdata.data.data.attributes)
+        })()
+    })
+
+
+
+
     let [title , SetTitle] = useState("");
     let [ description , Setdescription] = useState("");
     let [rules , setrules] = useState("");
@@ -10,48 +28,52 @@ function SingleHack() {
     let [participants , setparticipants] = useState("");
 
     
-    const topics = "topic 1, Topic 2, Topic 3"
+    // const topics = "topic 1, Topic 2, Topic 3"
     // convert topics into array
-    const topicsArray = topics.split(',').map(topic => topic.trim())
+    const topicsArray = data?.topics.split(',').map(topic => topic.trim())
 
 
+    if (!data) {
+        return null
+    } 
 
     return (
         <div className='flex flex-col items-center font-normal pb-10'>
-            <div
+            <img
                 className='h-96 w-full bg-white bg-center bg-cover mb-16'
-                style={{
+                // style={{
                     // this background image will be banner
-                    backgroundImage: "url('https://www.cornerstoneagility.com/wp-content/uploads/2022/10/Hackathon-banner.png')"
-                }}
-            ></div>
+                    src= {data.logo?data.logo: "url('https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/812/484/datas/medium_square.png')"}
+                // }}
+            />
             <div className='flex flex-col w-4/6  gap-8'>
                 <div className='flex justify-between items-center gap-16 w-full'>
 
-                    <div
-                        className='h-28 min-w-28 bg-white bg-center bg-cover rounded-lg'
-                        style={{
-                            backgroundImage: "url('https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/812/484/datas/medium_square.png')"
-                        }}
-                    ></div>
+                    <img
+                        className='h-96 w-full bg-white bg-center bg-cover mb-16'
+                        // style={{
+                            // this background image will be banner
+                            src= {data.logo?data.logo: "url('https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/812/484/datas/medium_square.png')"}
+                        // }}
+                    />
                     <div className='flex flex-col justify-between h-full'>
                         <div>
                             {nameOfOrganization}
                         </div>
                         <div>
-                            {nameOfHack}
+                            {data.name}
                         </div>
                     </div>
                 </div>
                 <div>
                     <div><b>Desciption : </b> </div>
-                    {description}
+                    {data.desc}
                 </div>
 
                 <div>
                     <div><b>Rules : </b> </div>
                     <div>
-                        {rules}
+                        {data?.rules}
                     </div>
                 </div>
 
@@ -60,7 +82,7 @@ function SingleHack() {
                 </div>
                 <div className='flex justify-between'>
                     <div>
-                        <span>Prizes worth</span> : <span>{prize}</span>
+                        <span>Prizes worth</span> : <span>{data.price}</span>
                     </div>
                     <div>
                         <span>Participants</span> : <span>{participants}</span>

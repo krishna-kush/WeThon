@@ -50,7 +50,7 @@ export const getAllHack = async () => {
     }
 }
 export const getHack = async (id) => {
-    let mdata = await Axios.get(`/hackathons/:${id}`)
+    let mdata = await Axios.get(`/hackathons/${id}`)
     .then((res) => {
         return {
             status: 200,

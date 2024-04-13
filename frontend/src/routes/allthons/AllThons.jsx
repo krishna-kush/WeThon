@@ -34,7 +34,7 @@ function AllThons() {
             data.map((element, i) => {
               const get = element.attributes
               console.log(get);
-              return <Card name={get.name} desc={get.desc} price={get.price} date={get.date} logo={get.logo}/>
+              return <Card id={element.id} name={get.name} desc={get.desc} price={get.price} date={get.date} logo={get.logo}/>
             })
           }
         

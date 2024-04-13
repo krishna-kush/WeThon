@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Dropzone from 'react-dropzone';
 
 import { Box, Typography, Button } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import DialogUpload from './dialog'
 
@@ -36,9 +37,13 @@ const index = () => {
                     alignContent : "center",
                     width: '100%'
 
-                  }} onClick={handleUpload} variant="contained"
+                  }} 
+                  
+                  tabIndex={-1}
+                  startIcon={<CloudUploadIcon />}
+                  onClick={handleUpload} variant="contained"
                   // disabled={circularLoading}
-                  >Upload</Button>
+                  >Upload Files</Button>
 
                   <Button lable='Upload' />
               </div>
