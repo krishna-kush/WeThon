@@ -12,9 +12,9 @@ import MemberList from './MemberList';
 
 function FeaturedPost({post}) {
   return (
-    <CardActionArea component="a" href="#">
-    <Card sx={{ display: 'flex' }}>
-        <CardContent sx={{ flex: 1 }}>
+    <CardActionArea component="a" href="#" >
+    <Card sx={{ display: 'flex' }} >
+        <CardContent sx={{ flex: 1 }} className='bg-black/20'>
         <Typography component="h2" variant="h5">
             {post.title}
         </Typography>
@@ -37,7 +37,7 @@ const index = () => {
     const info = {
         title: "HackName",
         date: "TeamName",
-        description: "This is a description of the hackathon"
+        description: "This is a description of the team"
     }
 
   return (

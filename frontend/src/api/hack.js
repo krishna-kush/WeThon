@@ -49,15 +49,32 @@ export const getAllHack = async () => {
         data: mdata,
     }
 }
+export const getHack = async (id) => {
+    let mdata = await Axios.get(`/hackathons/:${id}`)
+    .then((res) => {
+        return {
+            status: 200,
+            data: res.data.data,
+        }
+    })
+    .catch((err) => {
+        return err.response
+    })
+
+    return {
+        source: 'getAllHack',
+        data: mdata,
+    }
+}
 
 export const createHack = async (data) => {
 
-    const hack = await Axios.post('/hackathon', {
+    const hack = await Axios.post('/hackathons', {
         "data": {
             name: data.name,
             desc: data.desc,
-            startdate: data.startDate,
-            enddate: data.enddate,
+            // startdate: data.startDate,
+            // enddate: data.enddate,
             price: data.price,
             banner: data.banner,
             logo: data.logo,

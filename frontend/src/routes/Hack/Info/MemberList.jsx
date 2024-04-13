@@ -40,7 +40,7 @@ const MemberList = () => {
   const chipMargin = '5px'
 
   return (
-    <Box 
+    <Box className = "bg-black/10 rounded-2xl"
     >
         <Chip
             sx={{
