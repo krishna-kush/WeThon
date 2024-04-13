@@ -33,25 +33,25 @@ function Card({ name, desc, date, price }) {
                 
             </div>
 
-        </div>
-        <div className='border-l border-l-green-300/30  border-r-8 border-green-300  h-full p-8'>
-            <a href="www.google.com"> <Topics topics={['Google']}></Topics></a>
-            <div className='pt-2 text-white'>Mar 18 - May 03, 2024</div>
-            <div className='flex flex-col gap-2 pt-2 bg-blue-100/0 rounded-lg py-2 px-1 mt-2'>
-                <Topics topics={['Machine Learning','Data Science']}/>
+                </div>
+                <div className='border-l border-l-green-300/30  border-r-8 border-green-300  h-full p-8'>
+                    <a href="www.google.com"> <Topics topics={['Google']}></Topics></a>
+                    <div className='pt-2 text-white'>Mar 18 - May 03, 2024</div>
+                    <div className='flex flex-col gap-2 pt-2 bg-blue-100/0 rounded-lg py-2 px-1 mt-2'>
+                        <Topics topics={['Machine Learning', 'Data Science']} />
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-  )
+    )
 }
 export default Card
 
 
-function Topics({topics}){
+function Topics({ topics }) {
     return (
         <>
-            {topics.map(topic=>(
+            {topics.map(topic => (
                 <span className='border bg-blue-800/10 border-blue-500 text-blue-500 px-2 rounded-2xl py-0.5 w-fit '>{topic}</span>
             ))}
         </>
