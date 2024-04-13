@@ -1,11 +1,19 @@
 import React from 'react'
 
+import { useNavigate } from 'react-router'
 
-function Card({ name, desc, date, price, logo }) {
+
+function Card({ id, name, desc, date, price, logo }) {
+
+    const navigate = useNavigate()
+
     // console.log(logo);
+    const handleClick = () => {
+        navigate(`/singlehack/${id}`)
+    }
 
     return (
-    <div className='w-full'>
+    <div className='w-full' onClick={handleClick}>
 
     <div className='border rounded-xl rounded-r-none border-green-300 bg-[#302f2f]  h-fit w-full grid grid-cols-3 shadow-lg dark:bg-[#3B3E47] dark:hover:bg-[#53565e] hover:bg-[#00000020]  hover:cursor-pointer transform hover:scale-110 transition-transform duration-300'>
         <div className='  h-full  col-span-2 p-6 flex ' >
