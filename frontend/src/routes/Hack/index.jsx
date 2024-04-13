@@ -48,7 +48,7 @@ const index = () => {
 
       <Box
         sx={{
-          flex: 1,
+          flex: 0.5,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
