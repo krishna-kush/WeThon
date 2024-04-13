@@ -9,6 +9,7 @@ import AllThons from './routes/allthons/AllThons'
 import CodeSpace from './routes/Hack/codespace'
 import Createthon from './routes/createthon/Createthon'
 import Managethon from './routes/managethon/Managethon'
+import SingleHack from './routes/singlehack/SingleHack'
 
 import PageNotFound from './routes/PageNotFound'
 
@@ -36,6 +37,8 @@ function App() {
           <Route path='/createthon' element={<Createthon/>} />
           <Route path='/managethon' element={<Managethon/>} />
           {/* <Route path="/codespace" element={<CodeSpace />} /> */}
+          <Route path='/hack_description' element={<SingleHack/>} />
+          {/* <Route path='/*' element={<PageNotFound/>} /> */}
 
 
           <Route path='/*' element={<PageNotFound/>} />
