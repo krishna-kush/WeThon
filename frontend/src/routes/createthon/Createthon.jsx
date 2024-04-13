@@ -2,6 +2,11 @@ import { Input } from '@mui/material'
 import { Datepicker, FileInput } from 'flowbite-react'
 import React from 'react'
 
+import {Card, Box, Typography, Divider, Stack, Textarea, FormHelperText, CardOverflow, CardActions, Button, } from '@mui/joy';
+import EditorToolbar from './components/EditorToolbar';
+
+
+
 
 function Createthon() {
     return (
@@ -35,10 +40,50 @@ function Createthon() {
                             <div className='text-white text-lg'>Hackathon Name</div>
                             <input className='w-full p-2 bg-[#302f2f] rounded-lg' type="text" />
                         </div>
-                        <div>
+                        {/* <div>
                             <div className='text-white text-lg pt-4'>Hackathon Description</div>
                             <textarea className='w-full p-2 h-28 bg-[#302f2f] rounded-lg' type="text" />
-                        </div>
+                        </div> */}
+
+                        <br />
+                        
+                        <p>Bio</p>
+
+                        <Card>
+                        <Box sx={{ mb: 1 }}>
+                            {/* <Typography level="title-md">Bio</Typography> */}
+                            <Typography level="body-sm">
+                            Write a short introduction to be displayed on your profile
+                            </Typography>
+                        </Box>
+                        <Divider />
+                        <Stack spacing={2} sx={{ my: 1 }}>
+                            <EditorToolbar />
+                            <Textarea
+                            size="sm"
+                            minRows={4}
+                       
+                            sx={{ mt: 1.5 }}
+                            defaultValue="I'm a software developer based in Bangkok, Thailand. My goal is to solve UI problems with neat CSS without using too much JavaScript."
+                            />
+                            <FormHelperText sx={{ mt: 0.75, fontSize: 'xs' }}>
+                            275 characters left
+                            </FormHelperText>
+                        </Stack>
+                        {/* <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
+                            <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+                            <Button size="sm" variant="outlined" color="neutral">
+                                Cancel
+                            </Button>
+                            <Button size="sm" variant="solid">
+                                Save
+                            </Button>
+                            </CardActions>
+                        </CardOverflow> */}
+                        </Card>
+
+
+
                         <div className='flex items-center justify-between '>
                             <div>
                                 <div className='textx-white text-lg pt-4'>Start Date</div>
