@@ -38,6 +38,7 @@ function App() {
           <Route path="/" element={<Home2 />} />
           <Route path='/createthon' element={<Createthon/>} />
           <Route path='/managethon' element={<Managethon/>} />
+          <Route path='/singlehack' element={<SingleHack/>} />
 
           {/* <Route path="/codespace" element={<CodeSpace />} /> */}
 
