@@ -6,7 +6,10 @@ function SingleHack() {
     let [rules , setrules] = useState("");
     let [nameOfOrganization, setnameOfOrganization ]= useState("");
     let [ nameOfHack , setnameOfHack ] = useState("");
+    let [prize , setprize] = useState("");
+    let [participants , setparticipants] = useState("");
 
+    
     const topics = "topic 1, Topic 2, Topic 3"
     // convert topics into array
     const topicsArray = topics.split(',').map(topic => topic.trim())
@@ -33,34 +36,34 @@ function SingleHack() {
                     ></div>
                     <div className='flex flex-col justify-between h-full'>
                         <div>
-                            Name of the organization
+                            {nameOfOrganization}
                         </div>
                         <div>
-                            Name of the hack
+                            {nameOfHack}
                         </div>
                     </div>
                 </div>
                 <div>
                     <div><b>Desciption : </b> </div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe unde facilis sunt maiores odit tempore ut in eos similique illo commodi, deleniti repudiandae mollitia illum officia dolore reprehenderit impedit debitis veniam aliquam? Expedita nam eaque officia necessitatibus nesciunt debitis esse cumque vero? Aliquid, eos ipsam? Minima consequuntur quidem veritatis laudantium?
+                    {description}
                 </div>
 
                 <div>
                     <div><b>Rules : </b> </div>
                     <div>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga repellendus sequi sed iste et consequatur deleniti tenetur voluptatibus, quidem voluptate repudiandae incidunt odit, odio vero, illum porro. Minima totam voluptatibus non enim nemo, atque animi praesentium nostrum optio porro, vel officia! Consequuntur, quas eos. Aliquid veritatis tempora accusamus laborum hic!
+                        {rules}
                     </div>
                 </div>
 
                 <div>
-                    Duration : <span>start date</span> to <span>end date</span>
+                    Duration : <span>11th May</span> to <span>12th May</span>
                 </div>
                 <div className='flex justify-between'>
                     <div>
-                        <span>Prizes worth</span> : <span>prize</span>
+                        <span>Prizes worth</span> : <span>{prize}</span>
                     </div>
                     <div>
-                        <span>Participants</span> : <span>participants</span>
+                        <span>Participants</span> : <span>{participants}</span>
                     </div>
                 </div>
                 <div>
