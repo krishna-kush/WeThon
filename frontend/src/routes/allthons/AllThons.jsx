@@ -6,7 +6,7 @@ function AllThons() {
 
 
   return (
-    <div className=' bg-gray-600 max-h-full min-h-screen pb-24 flex flex-col justify-center items-center gap-8'>
+    <div className=' bg-[#232323] max-h-full min-h-screen pb-24 flex flex-col justify-center items-center gap-8'>
       <div className='flex items-center flex-col '> 
         <div className=' p-4 text-white text-[50px] font-bold'>All Thons</div>
         <div className=' p-4 text-white/60  text-2xl'>Find all the thons here</div>
