@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './routes/home/Home'
+import Home2 from './routes/home/Home'
 import Signin from './routes/signin/Signin'
 import Signup from './routes/signup/Signup'
 import Hack from './routes/Hack/index'
@@ -35,9 +35,10 @@ function App() {
           <Route path='/hack' element={<Hack/>} />
           <Route path="/allthons" element={<AllThons />} />
           <Route path="/header" element={<Header />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home2 />} />
           <Route path='/createthon' element={<Createthon/>} />
           <Route path='/managethon' element={<Managethon/>} />
+
           {/* <Route path="/codespace" element={<CodeSpace />} /> */}
 
 
