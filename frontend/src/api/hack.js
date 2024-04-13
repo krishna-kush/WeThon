@@ -69,7 +69,7 @@ export const getHack = async (id) => {
 
 export const createHack = async (data) => {
 
-    const hack = await Axios.post('/hackathons', {
+    const hack = await Axios.post('/hackathons?pagination[page]=1&pagination[pageSize]=10', {
         "data": {
             name: data.name,
             desc: data.desc,

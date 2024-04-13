@@ -72,7 +72,7 @@ function Createthon() {
             desc: input.desc,
             price: input.price,
             banner: input.banner,
-            logo: input.logo,
+            logo: img,
             fee: input.fee,
             topics: input.topics
         })
