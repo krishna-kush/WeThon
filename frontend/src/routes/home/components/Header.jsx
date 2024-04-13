@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 import { brainwave } from "../assets";
@@ -28,6 +28,8 @@ const Header = () => {
     enablePageScroll();
     setOpenNavigation(false);
   };
+
+  const navigate = useNavigate()
 
   return (
     <div
@@ -71,13 +73,13 @@ const Header = () => {
           <HamburgerMenu />
         </nav>
 
-        <a
-          href="#signup"
+        <button
+          onClick={()=>{navigate('/signup')}}
           className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
         >
           New account
-        </a>
-        <Button className="hidden lg:flex" href="#login">
+        </button>
+        <Button onClick={()=>{navigate('/signin')}} className="hidden lg:flex" >
           Sign in
         </Button>
 
