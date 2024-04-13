@@ -43,7 +43,7 @@ function Signup() {
 
     return (
         <>
-            <div className='h-screen bg-zinc-400 flex items-center justify-center '>
+            <div className='h-screen g-gradient-to-b from-[#0F0C17] to-[#431738] flex items-center justify-center '>
                 <div className='shadow-2xl h-4/5 min-h-[633px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white flex items-center justify-around flex-col  absolute z-0'>
                     <div className='font-bold text-5xl drop-shadow-3xl mt-4' >Sign Up</div>
                     <div className='w-5/6'>
@@ -72,7 +72,7 @@ function Signup() {
 
 
 function Loading() {
-    return <div className='bg-gray-200/[.7] shadow-2xl h-4/5 min-h-[633px] sm:w-4/5 min-w-80 max-w-md rounded-xl flex items-center justify-center relative z-2 flex-col gap-10 '>
+    return <div className=' bg-gradient-to-b from-[#5F5476] to-[#E8D8DB] shadow-2xl h-4/5 min-h-[633px] sm:w-4/5 min-w-80 max-w-md rounded-xl flex items-center justify-center relative z-2 flex-col gap-10 '>
 
         <div role="status ">
             <svg aria-hidden="true" className="drop-shadow-3xl h-20 text-white animate-spin dark:text-transparent fill-black" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

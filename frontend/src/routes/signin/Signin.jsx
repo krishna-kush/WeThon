@@ -37,21 +37,21 @@ function Signin() {
 
   return (
     <>
-      <div className='h-screen bg-zinc-400 flex items-center justify-center '>
-        <div className='shadow-2xl h-4/6 min-h-[450px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white flex items-center justify-around flex-col absolute z-0'>
-          <div className='font-bold text-5xl drop-shadow-3xl mt-4' >Sign In</div>
+      <div className='h-screen bg-gradient-to-b from-[#5F5476] to-[#E8D8DB] flex items-center justify-center '>
+        <div className='shadow-2xl h-4/6 min-h-[450px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white/60 flex items-center justify-around flex-col absolute z-0'>
+          <div className='font-bold text-5xl drop-shadow-3xl mt-4 text-black' >Sign In</div>
           <div className='w-5/6'>
             <div className='text-xl text-center text-gray-500 ' >Enter your credentials to access your account</div>
           </div>
           <div className='w-4/5 flex flex-col gap-1.5'>
-            <div className='text-xl font-semibold mt-2'>Email</div>
+            <div className='text-xl font-semibold mt-2 text-black'>Email</div>
             <input type="text" onChange={e => setEmail(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='leafvillage@example.com' />
-            <div className='text-xl font-semibold mt-2'>Password</div>
+            <div className='text-xl font-semibold mt-2 text-black'>Password</div>
             <input type="password" onChange={e => setPassword(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='' />
             {/* <button onClick={signUp} className='border-2 rounded-md w-full p-2 text-xl bg-black text-white mt-2'>Sign up</button> */}
-            <button onClick={signIn} className="button-50 text-xl mt-4" role="button">Sign in</button>
+            <button onClick={signIn} className="button-50 text-xl mt-4 bg-black py-2 rounded-xl" role="button">Sign in</button>
           </div>
-          <div className='font-semibold mt-2 mb-2'>Dont have an account? <a href="/signup" className='text-blue-500 underline'>Sign Up</a></div>
+          <div className='font-semibold mt-2 mb-2 text-black/55'>Dont have an account? <a href="/signup" className='text-blue-500 underline'>Sign Up</a></div>
         </div>
         {loading && <Loading />}
       </div>
