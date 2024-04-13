@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './components/Card'
 import Filter from './components/Filter'
 
+import { getAllHack } from '../../api/hack'
+
 function AllThons() {
+
+  const [data, setData] = useState([])
+
+  useEffect(()=>{
+    
+    const fetchData = async () => {
+      const response = await getAllHack();
+      console.log(response.data.data);
+      setData(response.data.data);
+    };
+  
+    fetchData();
+
+  }, [])
 
 
   return (
@@ -13,15 +29,13 @@ function AllThons() {
       </div>
       <Filter/>
       <div className='w-full flex justify-center'>
-        <div className=' w-3/6 flex flex-col gap-8'> 
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+        <div className=' w-3/6 flex flex-col gap-8'>
+          {
+            data.map((element, i) => {
+              const get = element.attributes
+              return <Card name={get.name} desc={get.desc} price={get.price} date={get.date}/>
+            })
+          }
         
         </div>
       </div>

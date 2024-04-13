@@ -1,8 +1,9 @@
 import React from 'react'
 
 
-function Card() {
-  return (
+function Card({ name, desc, date, price }) {
+
+    return (
     <div className='w-full'>
 
     <div className='border rounded-xl rounded-r-none border-green-300 bg-[#302f2f]  h-fit w-full grid grid-cols-3 shadow-lg dark:bg-[#3B3E47] dark:hover:bg-[#53565e] hover:bg-[#00000020]  hover:cursor-pointer transform hover:scale-110 transition-transform duration-300'>
@@ -14,20 +15,20 @@ function Card() {
     }}
 ></div>
             <div className='pl-4 flex gap-2 flex-col w-full'>   
-                <h1 className='text-white text-xl font-bold'>Thon Name</h1>
+                <h1 className='text-white text-xl font-bold'>{name}</h1>
                 <div className='flex justify-between w-full text-sm text-gray-300 pt-2'>
                     <div> 
-                        <span className=' bg-green-500 px-2 rounded-2xl py-0.5 text-white'>20 days left</span>
+                        <span className=' bg-green-500 px-2 rounded-2xl py-0.5 text-white'>{`${date} days left`}</span>
                         <div className='pt-2'>Mar 18 - May 03, 2024</div>
                     </div>
                     <div> 
-                        <div className='mb-2'><b>50,000</b> in prizes</div>
+                        <div className='mb-2'><b>{price}</b> in prizes</div>
                         <div><b>11000 </b>particepents</div>
                     </div>
                 </div>
 
                 <div className='text-white pt-2'>
-                    this will be the desctiption of the thon
+                    {desc}
                 </div>
                 
             </div>
