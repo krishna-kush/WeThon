@@ -40,7 +40,7 @@ const Header = () => {
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
         <a className="block w-[12rem] xl:mr-8" href="#hero">
           {/* add our image here  */}
-          <img src="/src/assets/WeTho2.jpg" width={95} height={20} alt="WeThon" style={{
+          <img src="./src/routes/home/assets/WeTho2.jpg" width={95} height={20} alt="WeThon" style={{
         borderRadius: '50%', 
         // opacity: 0.5
     }}  />
