@@ -14,7 +14,7 @@ function SingleHack() {
 
 
     return (
-        <div className='flex flex-col items-center font-normal'>
+        <div className='flex flex-col items-center font-normal pb-10'>
             <div
                 className='h-96 w-full bg-white bg-center bg-cover mb-16'
                 style={{
