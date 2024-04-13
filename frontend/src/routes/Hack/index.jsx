@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@mui/material';
 
 import Info from './Info/index'
-import Vid from './Vid/index'
+import Vid from './Vid/video'
 import Upload from './Upload/index'
 import Messages from './Messages/index'
 
@@ -53,8 +53,6 @@ const index = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          // height: '100%',
-          // backgroundColor: 'grey',
         }}
       >
         <Box 
