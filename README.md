@@ -67,9 +67,17 @@ A platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js) a
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ##  "/" route
 ![image](https://github.com/krishna-kush/WeThon/assets/120007288/c4c8d07e-f69f-46d2-975e-0910b0d0434c)
+
+
+
+ ## "/" route
+![image](https://github.com/krishna-kush/WeThon/assets/120007288/273f05c1-d635-4d22-bfdb-d587844f2716)
+
