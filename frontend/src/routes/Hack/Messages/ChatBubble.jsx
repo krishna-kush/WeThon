@@ -65,8 +65,9 @@ export default function ChatBubble(props) {
               borderTopRightRadius: isSent ? 0 : 'lg',
               borderTopLeftRadius: isSent ? 'lg' : 0,
               backgroundColor: isSent
-                ? 'var(--joy-palette-primary-solidBg)'
+                ? 'grey'
                 : 'background.body',
+              // backgroundColor: 'blue'
             }}
           >
             <Typography
