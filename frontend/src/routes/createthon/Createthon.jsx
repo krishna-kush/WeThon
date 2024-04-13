@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material'
+import { Avatar, Snackbar } from '@mui/material'
 import { Datepicker, FileInput } from 'flowbite-react'
 import React, {useState} from 'react'
 
@@ -11,6 +11,13 @@ import { createHack } from '../../api/hack.js';
 
 
 function Createthon() {
+
+    const handleClick = (newState) => () => {
+        setState({ ...newState, open: true });
+      };
+    const handleClose = (newState) => () => {
+        setState({ ...newState, open: false });
+      };
     
     const [img, setImg] = useState(null)
 
@@ -28,14 +35,23 @@ function Createthon() {
     
         // setImg(resizedBase64);
         setImg(base64);
+        setInput(prev => (
+            {
+                ...prev,
+                logo: img
+            }
+        ))
         // changeData('photo', 'value', base64)
+
     }
 
     const handleChange = (e) => {
+        console.log(e.target.name, e.target.value);
 
-        if (e.target.name === 'bio' && (275-parseInt(e.target.value.length)) < 0 ) {
+        if (e.target.name === 'desc' && (275-parseInt(e.target.value.length)) < 0 ) {
             return
         }
+
 
         setInput({
           ...input,
@@ -43,7 +59,30 @@ function Createthon() {
         });
       };
 
-    const handleSubmit = async (e) => {
+      const [state, setState] = React.useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+      });
+      const { vertical, horizontal, open } = state;
+
+    const handleSubmit = async () => {
+        const status = await createHack({
+            name : input.name,
+            desc: input.desc,
+            price: input.price,
+            banner: input.banner,
+            logo: input.logo,
+            fee: input.fee,
+            topics: input.topics
+        })
+
+        console.log(status);
+
+        // handleClick({ vertical: 'bottom', horizontal: 'left' })
+
+        alert("Uploded")
+
         
     }
 
@@ -118,16 +157,16 @@ function Createthon() {
                             size="sm"
                             minRows={4}
 
-                            name="bio"
-                            value={input.bio}
+                            name="desc"
+                            value={input.desc}
                             onChange={handleChange}
                        
                             sx={{ mt: 1.5 }}
                             defaultValue="This Is My Text"
                             />
                             <FormHelperText sx={{ mt: 0.75, fontSize: 'xs' }}>
-                            {parseInt(input?.bio?.length)?
-                                `${275-parseInt(input.bio.length)} characters left`:
+                            {parseInt(input?.desc?.length)?
+                                `${275-parseInt(input.desc.length)} characters left`:
                                 ''
                             }
                             </FormHelperText>
@@ -149,30 +188,32 @@ function Createthon() {
                         <div className='flex items-center justify-between '>
                             <div>
                                 <div className='textx-white text-lg pt-4'>Start Date</div>
-                                <Datepicker />
+                                <Datepicker id='start' name="startdate" onChange={handleChange} />
                             </div>
                             <div className='w-1/2 flex flex-col justify-end items-end'>
                                 <div className='text-white text-lg pt-4'>End Date</div>
-                                <Datepicker />
+                                <Datepicker id='end' />
                             </div>
                         </div>
                         <div className='flex justify-between '>
                             <div className='w-1/2'>
                                 <div className='text-white text-lg pt-4'>Prizepool  ( In INR )</div>
-                                <input className=' p-2 bg-[#302f2f] rounded-lg w-2/3' placeholder='99999' type="number" />
+                                <input name="price" value={input.price} onChange={handleChange} className=' p-2 bg-[#302f2f] rounded-lg w-2/3' placeholder='99999' type="number" />
                             </div>
                             <div className='w-1/2 flex flex-col justify-end items-end'>
                                 <div className='text-white text-lg pt-4 '>Registration Fee  ( In INR )</div>
-                                <input className='w-2/3 p-2 bg-[#302f2f] rounded-lg' placeholder='99999' type="number" />
+                                <input
+                                name="fee" value={input.fee} onChange={handleChange}
+                                className='w-2/3 p-2 bg-[#302f2f] rounded-lg' placeholder='99999' type="number" />
                             </div>
 
                         </div>
                         <div>
                             <div className='text-white text-lg pt-4'>Topics</div>
-                            <input className='w-full p-2 bg-[#302f2f] rounded-lg' type="text" />
+                            <input name="topics" value={input.topics} onChange={handleChange} className='w-full p-2 bg-[#302f2f] rounded-lg' type="text" />
                         </div>
                         <div className='text-white text-lg pt-4'>Rules</div>
-                        <textarea className='w-full p-2 h-28 bg-[#302f2f] rounded-lg' type="text" />
+                        <textarea name="rules" value={input.rules} onChange={handleChange} className='w-full p-2 h-28 bg-[#302f2f] rounded-lg' type="text" />
                     </div>
                 </div>
             </div>
@@ -180,6 +221,14 @@ function Createthon() {
             <Button onClick={handleSubmit}>
                 Submit
             </Button>
+
+            <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={open}
+                onClose={handleClose}
+                message="I love snacks"
+                key={vertical + horizontal}
+            />
 
         </div>
     )
