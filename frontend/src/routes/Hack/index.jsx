@@ -19,11 +19,9 @@ const index = () => {
     }}>
       <Box
       sx={{
-        width: '70%',
-        // height: '100%',
-        height: '50vh',
-        backgroundColor: 'grey',
+        width: '100%',
       }}
+      className="overflow-hidden bg-stone-600 flex items-center justify-center h-[70vh] max-h-[70vh]"
       >
         <Vid />
       </Box>
