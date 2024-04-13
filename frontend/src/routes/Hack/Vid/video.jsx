@@ -5,20 +5,20 @@ const UserPage = () => {
   const [isAdminStreaming, setIsAdminStreaming] = useState(false);
   const [peerConnection, setPeerConnection] = useState(null);
   const peerVideoRef = useRef();
-  const userVideoRef = useRef();
   const socket = useRef(null);
 
   useEffect(() => {
     socket.current = io("http://localhost:4000");
 
     socket.current.on("admin-stream", (data)=>handleAdminStream(data));
-    socket.current.on("stream-start", (data)=>handleStreamAnswer(data)); // Listen for stream-answer event
+    socket.current.on("start-stream", (data)=>handleStreamAnswer(data)); // Listen for stream-answer event
 
     return cleanupResources;
   }, []);
 
   const handleAdminStream = (data) => {
     console.log("in admin");
+    console.log(data)
     setIsAdminStreaming(true);
     if (!peerConnection) {
       console.log("creating connection");
@@ -29,6 +29,7 @@ const UserPage = () => {
   };
 
   const handleStreamAnswer = async (data) => {
+    console.log(data)
     console.log("Received stream answer from admin");
     try {
       console.log(data.signal)
