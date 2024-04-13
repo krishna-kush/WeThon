@@ -2,70 +2,67 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
 
 function Signup() {
 
-    const [firstname, setFirstName] = useState('');
-    const [lastname, setLastName] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [contact, setContact] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoad] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false)
+
 
     const navigate = useNavigate()
 
     const signUp = async () => {
         setLoad(true);
-        // await axios.post('http://localhost:3000/api/v1/user/signup', {
-        await axios.post('https://paytm-end-to-end-production.up.railway.app/api/v1/user/signup', {
-            firstname: firstname.charAt(0).toUpperCase() + firstname.slice(1),
-            lastname: lastname.charAt(0).toUpperCase() + lastname.slice(1),
-            username: email,
-            password: password
-        })
-            .then((response) => {
-                if (response.status == 200) {
-                    localStorage.setItem("user", JSON.stringify(`Bearer ${response.data.token}`));
-                    console.log("redirecting...... to dashborad.");
-                    navigate('/dashboard');
-                }else{
-                    alert(response.data.message);
-                    setLoad(false);
-                }
+        {
+            const res = await axios.post('http://localhost:4000/api/v1/signup', {
+                email,
+                password,
+                isAdmin,
+                fullName,
+                contact
             })
-            .catch((err) => {
-                setLoad(false);
-                alert("error: " + err.response.data.message);
-                console.log(err);
-            })
-        // await axios.get('http://localhost:3000/');
+            if (!res.data.success) {
+                alert("Some error occured please try again later.")
+            } else {
+                navigate("/signin")
+            }
+        }
+        setLoad(false)
     }
 
     return (
         <>
-            <div className='h-screen g-gradient-to-b from-[#0F0C17] to-[#431738] flex items-center justify-center '>
-                <div className='shadow-2xl h-4/5 min-h-[633px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white flex items-center justify-around flex-col  absolute z-0'>
-                    <div className='font-bold text-5xl drop-shadow-3xl mt-4' >Sign Up</div>
+            <div className='h-screen bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center text-black'>
+                <div className='shadow-2xl h-4/5 min-h-[633px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white dark:bg-gray-800 flex items-center justify-around flex-col absolute z-0'>
+                    <div className='font-bold text-5xl dark:text-white drop-shadow-3xl mt-4'>Sign Up</div>
                     <div className='w-5/6'>
-                        <div className='text-xl text-center text-gray-500 ' >Enter your information to create an account</div>
+                        <div className='text-xl text-center text-gray-700 dark:text-gray-300'>Enter your information to create an account</div>
                     </div>
                     <div className='w-4/5 flex flex-col gap-1'>
-                        <div className='text-xl font-semibold mt-2'>First Name</div>
-                        <input type="text" onChange={e => setFirstName(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='Naruto' />
-                        <div className='text-xl font-semibold mt-2'>Last Name</div>
-                        <input type="text" onChange={e => setLastName(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='Uzumaki' />
-                        <div className='text-xl font-semibold mt-2'>Email</div>
-                        <input type="text" onChange={e => setEmail(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='leafvillage@example.com' />
-                        <div className='text-xl font-semibold mt-2'>Password</div>
-                        <input type="password" onChange={e => setPassword(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='' />
-                        {/* <button onClick={signUp} className='border-2 rounded-md w-full p-2 text-xl bg-black text-white mt-2'>Sign up</button> */}
-                        <button onClick={signUp} className="button-50 text-xl mt-4" role="button">Sign up</button>
+                        <div className='text-xl font-semibold mt-2 dark:text-white'>First Name</div>
+                        <input type="text" onChange={e => setFullName(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl dark:bg-gray-700 dark:text-white' placeholder='Naruto Uzumaki' />
+
+                        <div className='text-xl font-semibold mt-2 dark:text-white'>Contact</div>
+                        <input type="text" onChange={e => setContact(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl dark:bg-gray-700 dark:text-white' placeholder='XXXXXXXXXX' />
+                        <div className='text-xl font-semibold mt-2 dark:text-white'>Email</div>
+                        <input type="text" onChange={e => setEmail(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl dark:bg-gray-700 dark:text-white' placeholder='leafvillage@example.com' />
+                        <div className='text-xl font-semibold mt-2 dark:text-white'>Password</div>
+                        <input type="password" onChange={e => setPassword(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl dark:bg-gray-700 dark:text-white' placeholder='●●●●●●●●' />
+                        <FormControlLabel control={<Checkbox onChange={()=>setIsAdmin(!isAdmin)} />} label="Admin?" />
+                        <button onClick={signUp} className="button-50 text-xl mt-4 dark:bg-blue-500 dark:text-white border-2 border-gray-700 rounded-md p-2" role="button">Sign up</button>
                     </div>
-                    <div className='font-semibold mt-2 mb-2'>Already have an account? <a href="/signin" className='text-blue-500 underline'>Sign In</a></div>
+                    <div className='font-semibold mt-2 mb-2 dark:text-white'>Already have an account? <a href="/signin" className='text-blue-500 underline'>Sign In</a></div>
                 </div>
-                {loading&& <Loading />}
+                {loading && <Loading />}
             </div>
         </>
+
     )
 }
 

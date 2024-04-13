@@ -13,31 +13,28 @@ function Signin() {
 
   const signIn = async () => {
     setLoad(true);
-    // await axios.post('http://localhost:3000/api/v1/user/signin', {
-    await axios.post('https://paytm-end-to-end-production.up.railway.app/api/v1/user/signin', {
-      username: email,
-      password: password
-    })
-      .then((response) => {
-        if (response.status == 200) {
-          localStorage.setItem("user", JSON.stringify(`Bearer ${response.data.token}`));
-          console.log("redirecting...... to dashborad.");
-          navigate('/dashboard');
-        } else {
-          setLoad(false);
-          alert(response.data.message);
-        }
+    try{
+      const res=await axios.post('http://localhost:4000/api/v1/signin', {
+        email: email,
+        password: password
       })
-      .catch((err) => {
-        setLoad(false);
-        alert("error: " + err.response.data.message);
-        console.log(err);
-      })
+      if(res.data.success){
+        delete res.data.success
+        window.localStorage.setItem("user",JSON.stringify(res.data))
+        navigate("/allthons")
+      }else{
+        console.log("Error: ",error.message)
+        alert("Some error occured,Please try again later.")
+      }
+    }catch(err){
+      console.log("Error occured ",err.message)
+    }
+    setLoad(false)
   }
 
   return (
     <>
-      <div className='h-screen bg-gradient-to-b from-[#5F5476] to-[#E8D8DB] flex items-center justify-center '>
+      <div className='h-screen bg-gradient-to-b from-[#5F5476] to-[#E8D8DB] flex items-center justify-center text-black'>
         <div className='shadow-2xl h-4/6 min-h-[450px] sm:w-4/5 min-w-80 max-w-md rounded-xl bg-white/60 flex items-center justify-around flex-col absolute z-0'>
           <div className='font-bold text-5xl drop-shadow-3xl mt-4 text-black' >Sign In</div>
           <div className='w-5/6'>
@@ -48,8 +45,7 @@ function Signin() {
             <input type="text" onChange={e => setEmail(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='leafvillage@example.com' />
             <div className='text-xl font-semibold mt-2 text-black'>Password</div>
             <input type="password" onChange={e => setPassword(e.target.value)} className='border-2 rounded-md w-full p-2 text-xl' placeholder='' />
-            {/* <button onClick={signUp} className='border-2 rounded-md w-full p-2 text-xl bg-black text-white mt-2'>Sign up</button> */}
-            <button onClick={signIn} className="button-50 text-xl mt-4 bg-black py-2 rounded-xl" role="button">Sign in</button>
+            <button onClick={signIn} className="button-50 text-xl mt-4 bg-black text-white py-2 rounded-xl" role="button">Sign in</button>
           </div>
           <div className='font-semibold mt-2 mb-2 text-black/55'>Dont have an account? <a href="/signup" className='text-blue-500 underline'>Sign Up</a></div>
         </div>
