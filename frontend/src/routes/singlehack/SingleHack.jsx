@@ -22,7 +22,7 @@ function SingleHack() {
                 className='h-96 w-full bg-white bg-center bg-cover mb-16'
                 style={{
                     // this background image will be banner
-                    backgroundImage: "url('https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/812/484/datas/medium_square.png')"
+                    backgroundImage: "url('https://www.cornerstoneagility.com/wp-content/uploads/2022/10/Hackathon-banner.png')"
                 }}
             ></div>
             <div className='flex flex-col w-4/6  gap-8'>
