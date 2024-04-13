@@ -7,6 +7,8 @@ import Hack from './routes/Hack/index'
 import AllThons from './routes/allthons/AllThons'
 import { Header } from './components/Hero'
 import CodeSpace from './routes/Hack/codespace'
+import Createthon from './routes/createthon/Createthon'
+import Managethon from './routes/managethon/Managethon'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
           <Route path="/allthons" element={<AllThons />} />
           <Route path="/header" element={<Header />} />
           <Route path="/" element={<Home />} />
+          <Route path='/createthon' element={<Createthon/>} />
+          <Route path='/managethon' element={<Managethon/>} />
           {/* <Route path="/codespace" element={<CodeSpace />} /> */}
         </Routes>
       </BrowserRouter>
