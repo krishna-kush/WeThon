@@ -1,8 +1,12 @@
 import React from 'react'
+import Stream from './Stream'
 
 function Managethon() {
   return (
-    <div>Managethon</div>
+    <div>
+      <Stream/>
+
+    </div>
   )
 }
 

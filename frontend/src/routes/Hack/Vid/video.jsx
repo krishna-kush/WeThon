@@ -4,25 +4,32 @@ import io from "socket.io-client";
 const UserPage = () => {
   const [isAdminStreaming, setIsAdminStreaming] = useState(false);
   const peerVideoRef = useRef();
+  const userVideoRef = useRef();
+  const socket = useRef(null);
 
   useEffect(() => {
-    const socket = io("http://localhost:4000"); // Replace with your server URL
+    socket.current = io("http://localhost:4000"); // Replace with your server URL
 
-    socket.on("admin-stream", (data) => {
+    socket.current.on("admin-stream", (data) => {
       setIsAdminStreaming(true);
-      handleIncomingCall(data.signal);
+      handleIncomingCall(data.signal, data.adminSocketId);
     });
 
-    socket.on("admin-disconnected", () => {
+    socket.current.on("admin-disconnected", () => {
       setIsAdminStreaming(false);
     });
 
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((currentStream) => {
+        userVideoRef.current.srcObject = currentStream;
+      });
+
     return () => {
-      socket.disconnect();
+      socket.current.disconnect();
     };
   }, []);
 
-  const handleIncomingCall = (signalData) => {
+  const handleIncomingCall = (signalData, adminSocketId) => {
     const peer = new RTCPeerConnection();
 
     peer.onaddstream = (event) => {
@@ -33,15 +40,25 @@ const UserPage = () => {
 
     peer.onicecandidate = (event) => {
       if (event.candidate) {
-        socket.emit("answer", event.candidate);
+        socket.current.emit("answer", {
+          signal: event.candidate,
+          to: adminSocketId,
+        });
       }
     };
 
     peer.createAnswer()
       .then((answer) => peer.setLocalDescription(answer))
       .then(() => {
-        socket.emit("answer", peer.localDescription);
+        socket.current.emit("answer", {
+          signal: peer.localDescription,
+          to: adminSocketId,
+        });
       });
+  };
+
+  const startStream = () => {
+    socket.current.emit("start-stream");
   };
 
   return (
@@ -51,6 +68,8 @@ const UserPage = () => {
       ) : (
         <p>Stream not started</p>
       )}
+      <video ref={userVideoRef} autoPlay muted className="border-2 border-red-500" />
+      <button onClick={startStream}>Start Stream</button>
     </div>
   );
 };
