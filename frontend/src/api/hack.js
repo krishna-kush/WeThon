@@ -50,52 +50,25 @@ export const getAllHack = async () => {
     }
 }
 
-export const create = async (data) => {
-    console.log('add user', data);
+export const createHack = async (data) => {
 
-    // console.log('query', query);
-
-    let mdata = await Axios.get(`/global-users?${query.checkEmail(data.email)}`)
-    .then(async (res) => {
-        if (res.data.data.length === 0) {
-            console.log('no user found');
-
-            const globalUserRes = await Axios.post('/global-users', {
-                "data": {
-                    username: data.username,
-                    email: data.email,
-                    password: data.password,
-                    firstname: data.firstname,
-                    lastname: data.lastname,
-                },
-            })
-            const cloudUserRes = await Axios.post('/cloud-users', {
-                "data": {
-                    global_user: {
-                        connect: [globalUserRes.data.data.id]
-                    },
-                },
-            })
-
-            return {
-                status: 200,
-                msg: 'user created',
-                cloud_user_id: cloudUserRes.data.data.id,                
-            }
-
-        }
-
-        return {
-            status: 403,
-            msg: 'user already found',
-        }
+    const hack = await Axios.post('/hackathon', {
+        "data": {
+            name: data.name,
+            desc: data.desc,
+            startdate: data.startDate,
+            enddate: data.enddate,
+            price: data.price,
+            banner: data.banner,
+            logo: data.logo,
+            fee: data.fee,
+            topics: data.topics,
+        },
     })
-    .catch((err) => {
-        return err.response
-    })
+
 
     return {
         source: 'createUser',
-        data: mdata,
+        data: hack,
     }
 }

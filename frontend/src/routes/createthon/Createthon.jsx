@@ -1,14 +1,52 @@
-import { Input } from '@mui/material'
+import { Avatar } from '@mui/material'
 import { Datepicker, FileInput } from 'flowbite-react'
-import React from 'react'
+import React, {useState} from 'react'
 
-import {Card, Box, Typography, Divider, Stack, Textarea, FormHelperText, CardOverflow, CardActions, Button, } from '@mui/joy';
+import {Card, Box, Typography, Divider, Stack, Textarea, FormHelperText, Button, } from '@mui/joy';
 import EditorToolbar from './components/EditorToolbar';
 
+import { convertToBase64, resizeAndConvertToBase64 } from './utils.js'
 
+import { createHack } from '../../api/hack.js';
 
 
 function Createthon() {
+    
+    const [img, setImg] = useState(null)
+
+    const [input, setInput] = useState({})
+
+    console.log(input);
+    
+    const handleInputChange = async (e) => {
+        const imageFile = e.target.files[0];
+        const [max_height, max_width] = [ 50, 50 ]
+        
+        const base64 = await convertToBase64(imageFile);
+    
+        const resizedBase64 = await resizeAndConvertToBase64(imageFile, max_height, max_width); // Resize to desired dimensions
+    
+        // setImg(resizedBase64);
+        setImg(base64);
+        // changeData('photo', 'value', base64)
+    }
+
+    const handleChange = (e) => {
+
+        if (e.target.name === 'bio' && (275-parseInt(e.target.value.length)) < 0 ) {
+            return
+        }
+
+        setInput({
+          ...input,
+          [e.target.name]: e.target.value
+        });
+      };
+
+    const handleSubmit = async (e) => {
+        
+    }
+
     return (
         <div className=' bg-[#232323] max-h-full min-h-screen pb-24 flex flex-col justify-center items-center gap-8'>
             <div className='flex items-center flex-col  '>
@@ -21,11 +59,28 @@ function Createthon() {
                     <div className='text-white flex flex-col gap-2'>
                         <div className='flex items-center gap-8 pb-4 justify-between'>
                             <div
-                                className='h-28 w-28 bg-white bg-center bg-cover rounded-full'
-                                style={{
-                                    backgroundImage: "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')"
-                                }}
-                            ></div>
+                            style={{
+                                position: 'relative',
+                                // backgroundImage: "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')"
+                            }}
+                                // className='h-28 w-28 bg-white bg-center bg-cover rounded-full'
+                            >
+                                <Avatar src={img? img :"url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')" }
+                                sx={{ width: '8rem', height: '8rem' }} />
+                                <input
+                                    style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    opacity: 0,
+                                    cursor: 'pointer',
+                                    }}
+                                    onChange={handleInputChange}
+                                    type="file"
+                                />
+                            </div>
                             <div className='flex flex-col gap-4'>
                                 <div>
                                     Profile<FileInput className='border-none' />
@@ -38,7 +93,7 @@ function Createthon() {
                         <div>
 
                             <div className='text-white text-lg'>Hackathon Name</div>
-                            <input className='w-full p-2 bg-[#302f2f] rounded-lg' type="text" />
+                            <input name="name" value={input.name} onChange={handleChange} className='w-full p-2 bg-[#302f2f] rounded-lg' type="text" />
                         </div>
                         {/* <div>
                             <div className='text-white text-lg pt-4'>Hackathon Description</div>
@@ -62,12 +117,19 @@ function Createthon() {
                             <Textarea
                             size="sm"
                             minRows={4}
+
+                            name="bio"
+                            value={input.bio}
+                            onChange={handleChange}
                        
                             sx={{ mt: 1.5 }}
-                            defaultValue="I'm a software developer based in Bangkok, Thailand. My goal is to solve UI problems with neat CSS without using too much JavaScript."
+                            defaultValue="This Is My Text"
                             />
                             <FormHelperText sx={{ mt: 0.75, fontSize: 'xs' }}>
-                            275 characters left
+                            {parseInt(input?.bio?.length)?
+                                `${275-parseInt(input.bio.length)} characters left`:
+                                ''
+                            }
                             </FormHelperText>
                         </Stack>
                         {/* <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
@@ -114,6 +176,10 @@ function Createthon() {
                     </div>
                 </div>
             </div>
+
+            <Button onClick={handleSubmit}>
+                Submit
+            </Button>
 
         </div>
     )
